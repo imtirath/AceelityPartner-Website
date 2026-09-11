@@ -4,6 +4,7 @@
  * type owns the semantics, the responsive behaviour and the states.
  */
 const { esc, attr, spine, button, actionLink, footnote, intro } = require('./primitives');
+const { capabilityDiagram } = require('./diagrams');
 
 /* -- Hero ---------------------------------------------------------------- */
 function hero(s) {
@@ -12,17 +13,20 @@ function hero(s) {
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
-        <div>
+        <div class="hero__content">
           <p class="hero__eyebrow" data-reveal="1">${esc(s.eyebrow)}</p>
           <h1 class="hero__headline" data-reveal="2">
             ${lines}
           </h1>
         </div>
-        <div class="hero__aside">
-          <hr class="hero__rule" data-reveal="2">
-          <p class="hero__support" data-reveal="3">${esc(s.support)}</p>
-          <div class="hero__actions button-row" data-reveal="3">
-            ${s.actions.map(a => button(a)).join('\n            ')}
+        <div class="hero__visual">
+          ${capabilityDiagram()}
+          <div class="hero__aside">
+            <hr class="hero__rule" data-reveal="2">
+            <p class="hero__support" data-reveal="3">${esc(s.support)}</p>
+            <div class="hero__actions button-row" data-reveal="3">
+              ${s.actions.map(a => button(a)).join('\n            ')}
+            </div>
           </div>
         </div>
       </div>
