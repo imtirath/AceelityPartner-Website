@@ -31,4 +31,29 @@
       header.setAttribute('data-scrolled', String(!entries[0].isIntersecting));
     }).observe(sentinel);
   }
+  var roleGrid = document.querySelector('.role-grid');
+  if (roleGrid) {
+    var cards = Array.from(roleGrid.querySelectorAll('.role-card'));
+    function clearActive() {
+      cards.forEach(function (c) { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+    }
+    cards.forEach(function (card) {
+      card.addEventListener('mouseenter', function () { clearActive(); card.classList.add('active'); });
+      card.addEventListener('mouseleave', function () { card.classList.remove('active'); });
+      card.addEventListener('focus', function () { clearActive(); card.classList.add('active'); });
+      card.addEventListener('blur', function () { card.classList.remove('active'); });
+      card.addEventListener('click', function (e) {
+        var pressed = card.getAttribute('aria-pressed') === 'true';
+        if (pressed) { card.setAttribute('aria-pressed', 'false'); card.classList.remove('active'); }
+        else { clearActive(); card.setAttribute('aria-pressed', 'true'); card.classList.add('active'); }
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault(); card.click();
+        } else if (e.key === 'Escape') {
+          e.preventDefault(); clearActive();
+        }
+      });
+    });
+  }
 }());

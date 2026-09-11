@@ -7,7 +7,7 @@
  * carries no claim that is not already approved brand copy.
  */
 const fs = require('fs');
-const path = require('path');
+const pathModule = require('path');
 const { esc } = require('../components/primitives');
 const { header, footer } = require('../components/chrome');
 
@@ -41,10 +41,10 @@ function document({ site, page, body, path }) {
   const title = page.title;
   const description = page.metaDescription;
   // Detect whether self-hosted font files exist in the expected build source
-  const ROOT = path.join(__dirname, '..', '..');
-  const fontsDir = path.join(ROOT, 'assets', 'fonts');
-  const hasInterVariable = fs.existsSync(path.join(fontsDir, 'Inter-Variable.woff2'));
-  const hasInterDisplay = fs.existsSync(path.join(fontsDir, 'Inter-Display.woff2'));
+  const ROOT = pathModule.join(__dirname, '..', '..');
+  const fontsDir = pathModule.join(ROOT, 'assets', 'fonts');
+  const hasInterVariable = fs.existsSync(pathModule.join(fontsDir, 'Inter-Variable.woff2'));
+  const hasInterDisplay = fs.existsSync(pathModule.join(fontsDir, 'Inter-Display.woff2'));
 
   return `<!DOCTYPE html>
 <html lang="${esc(site.language)}">

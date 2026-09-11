@@ -21,8 +21,10 @@
   <link rel="icon" href="/assets/brand/favicon-16.png" sizes="16x16" type="image/png">
   <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
 
+  
   <link rel="preconnect" href="https://rsms.me" crossorigin>
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  
   <link rel="stylesheet" href="/assets/accelity.css">
 
 </head>
@@ -70,19 +72,54 @@
   <section class="hero">
     <div class="container">
       <div class="hero__grid">
-        <div>
+        <div class="hero__content">
           <p class="hero__eyebrow" data-reveal="1">Accelity Partners</p>
           <h1 class="hero__headline" data-reveal="2">
             <span>Growth.</span>
             <span>Built Together.</span>
           </h1>
         </div>
-        <div class="hero__aside">
-          <hr class="hero__rule" data-reveal="2">
-          <p class="hero__support" data-reveal="3">A venture-building and holding company, creating and scaling businesses across sectors.</p>
-          <div class="hero__actions button-row" data-reveal="3">
-            <a class="button button--primary" href="/about/">Explore Accelity</a>
+        <div class="hero__visual">
+          
+  <div class="capability-diagram" role="img" aria-label="Capability compounding diagram showing capabilities converging into ventures and compounding over time">
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="rgba(11,45,75,0.12)"/>
+        </filter>
+      </defs>
+      <!-- capability nodes -->
+      <g stroke="var(--accelity-foundation-navy)" stroke-width="2" fill="none">
+        <line x1="60" y1="60" x2="300" y2="170" stroke-linecap="round"/>
+        <line x1="540" y1="60" x2="300" y2="170" stroke-linecap="round"/>
+        <line x1="300" y1="320" x2="300" y2="170" stroke-linecap="round"/>
+      </g>
+      <!-- capability labels -->
+      <g font-family="var(--accelity-font-body)" font-size="12" fill="var(--text-secondary)">
+        <text x="28" y="52">Entrepreneurship</text>
+        <text x="460" y="52">Technology + AI</text>
+        <text x="290" y="338">Execution & Talent</text>
+      </g>
+      <!-- venture node -->
+      <g filter="url(#shadow)">
+        <circle cx="300" cy="170" r="36" fill="var(--accelity-foundation-navy)" />
+        <circle class="pulse" cx="300" cy="170" r="18" fill="var(--accent)" />
+        <text x="300" y="175" font-family="var(--accelity-font-display)" font-size="12" fill="var(--accelity-white)" text-anchor="middle">VENTURE</text>
+      </g>
+      <!-- progression arrow -->
+      <g stroke="var(--accelity-foundation-navy)" stroke-width="2" fill="none">
+        <path d="M 340 170 C 420 170, 480 150, 540 150" stroke-linecap="round"/>
+        <polygon points="548,148 560,150 548,152" fill="var(--accelity-foundation-navy)" />
+      </g>
+    </svg>
+  </div>
+          <div class="hero__aside">
+            <hr class="hero__rule" data-reveal="2">
+            <p class="hero__support" data-reveal="3">A venture-building and holding company, creating and scaling businesses across sectors.</p>
+            <div class="hero__actions button-row" data-reveal="3">
+              <a class="button button--primary" href="/about/">Explore Accelity</a>
             <a class="button button--secondary" href="/connect/">Connect with us</a>
+            </div>
           </div>
         </div>
       </div>
@@ -119,24 +156,28 @@
 
           <h2 class="section__heading">Builders. Owners. Partners. Enablers.</h2>
           <p class="section__intro">Four complementary roles, connected by an entrepreneurial and long-term ownership mindset.</p>
-          <dl class="ledger">
-            <div class="ledger__row">
-              <dt class="ledger__term">Build</dt>
-              <dd class="ledger__definition">Create and incubate our own ventures, shaping the proposition, business model, leadership and capabilities.</dd>
+          <div class="role-grid" role="list">
+            <div class="role-card" role="button" tabindex="0" data-role-index="0" aria-pressed="false">
+              <div class="role-card__indicator" aria-hidden="true"></div>
+              <h3 class="role-card__title">Build</h3>
+              <p class="role-card__desc">Create and incubate our own ventures, shaping the proposition, business model, leadership and capabilities.</p>
             </div>
-            <div class="ledger__row">
-              <dt class="ledger__term">Own</dt>
-              <dd class="ledger__definition">Acquire and hold equity interests, stewarding long-term value through responsible ownership and governance.</dd>
+            <div class="role-card" role="button" tabindex="0" data-role-index="1" aria-pressed="false">
+              <div class="role-card__indicator" aria-hidden="true"></div>
+              <h3 class="role-card__title">Own</h3>
+              <p class="role-card__desc">Acquire and hold equity interests, stewarding long-term value through responsible ownership and governance.</p>
             </div>
-            <div class="ledger__row">
-              <dt class="ledger__term">Partner</dt>
-              <dd class="ledger__definition">Work with selected businesses and entrepreneurial teams through an agreed equity or strategic relationship.</dd>
+            <div class="role-card" role="button" tabindex="0" data-role-index="2" aria-pressed="false">
+              <div class="role-card__indicator" aria-hidden="true"></div>
+              <h3 class="role-card__title">Partner</h3>
+              <p class="role-card__desc">Work with selected businesses and entrepreneurial teams through an agreed equity or strategic relationship.</p>
             </div>
-            <div class="ledger__row">
-              <dt class="ledger__term">Enable</dt>
-              <dd class="ledger__definition">Offer focused business consultancy where appropriate, without implying ownership.</dd>
+            <div class="role-card" role="button" tabindex="0" data-role-index="3" aria-pressed="false">
+              <div class="role-card__indicator" aria-hidden="true"></div>
+              <h3 class="role-card__title">Enable</h3>
+              <p class="role-card__desc">Offer focused business consultancy where appropriate, without implying ownership.</p>
             </div>
-          </dl>
+          </div>
           <p class="section__footnote">Consultancy is one engagement model. It is not the primary definition of Accelity Partners.</p>
           <a class="action-link" href="/approach/">Read our approach</a>
         </div>

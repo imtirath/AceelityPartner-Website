@@ -1,4 +1,4 @@
-:root {
+@font-face {font-family: 'InterVariable';src: url('/assets/fonts/Inter-Variable.woff2') format('woff2');font-weight: 100 900;font-style: normal;font-display: swap;}@font-face {font-family: 'InterDisplay';src: url('/assets/fonts/Inter-Display.woff2') format('woff2');font-weight: 600 900;font-style: normal;font-display: swap;}:root {--accelity-font-display: 'InterDisplay', 'InterVariable', 'Inter', Arial, sans-serif;--accelity-font-body: 'InterVariable', 'Inter', Arial, sans-serif;}:root {
 --accelity-acceleration-orange: #F58220;
 --accelity-foundation-navy: #0B2D4B;
 --accelity-white: #FFFFFF;
@@ -215,6 +215,10 @@ transition-duration: 0.01ms !important;
 .section { border-top-color: #999; page-break-inside: avoid; }
 .inverse { background: #fff; color: #000; }
 }
+:root {
+--container: 1360px; 
+--logo-height: 2rem; 
+}
 .button {
 display: inline-flex;
 align-items: center;
@@ -303,11 +307,11 @@ text-decoration: none;
 flex: none;
 }
 .site-header__logo img {
-height: var(--logo-height, 1.75rem);
+height: var(--logo-height, 2rem);
 width: auto;
 }
 @media (min-width: 60rem) {
-.site-header__logo { --logo-height: 2rem; }
+.site-header__logo { --logo-height: 2.5rem; }
 }
 .site-nav { display: none; }
 @media (min-width: 60rem) {
@@ -430,12 +434,21 @@ color: var(--text-primary);
 @media (min-width: 60rem) {
 .hero__grid {
 display: grid;
-grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+grid-template-columns: repeat(12, 1fr);
 column-gap: var(--spine-gap);
 align-items: end;
+gap: 0;
 }
+.hero__content { grid-column: 1 / span 7; }
+.hero__visual { grid-column: 9 / -1; align-self: center; }
 .hero__rule { margin-bottom: var(--space-8); }
 .hero__aside { padding-bottom: var(--space-2); }
+}
+.hero__visual .capability-diagram { width: 100%; height: 100%; max-width: 480px; margin-left: auto; }
+.capability-diagram svg { width: 100%; height: auto; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+.capability-diagram .pulse { animation: cap-pulse 1800ms ease-in-out infinite; }
+@keyframes cap-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.85; } 100% { transform: scale(1); opacity: 1; } }
 }
 @media (prefers-reduced-motion: no-preference) {
 .hero [data-reveal] {
@@ -488,6 +501,47 @@ display: grid;
 gap: var(--space-2);
 padding-block: var(--space-6);
 border-top: var(--hairline) solid var(--border-default);
+}
+.role-grid {
+margin-top: var(--space-12);
+display: grid;
+gap: var(--space-6);
+}
+@media (min-width: 60rem) {
+.role-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--spine-gap); }
+}
+.role-card {
+position: relative;
+background: var(--surface-canvas);
+border: 1px solid var(--border-default);
+padding: var(--space-6);
+display: flex;
+flex-direction: column;
+gap: var(--space-3);
+cursor: pointer;
+transition: transform var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
+}
+.role-card:focus { outline: none; }
+.role-card:focus-visible { box-shadow: 0 0 0 3px var(--focus-ring); }
+.role-card__indicator {
+width: 36px; height: 6px; background: var(--border-default); border-radius: 3px;
+}
+.role-card__title { font-family: var(--accelity-font-display); font-size: var(--type-h3); font-weight: 700; }
+.role-card__desc { color: var(--text-secondary); margin-top: var(--space-2); }
+.role-card:hover, .role-card:focus {
+transform: translateY(-4px);
+border-color: rgba(11,45,75,0.12);
+}
+.role-card.active, .role-card[aria-pressed="true"] {
+border-color: var(--accent);
+box-shadow: 0 8px 24px rgba(11,45,75,0.06);
+}
+.role-card.active .role-card__indicator, .role-card[aria-pressed="true"] .role-card__indicator {
+background: var(--accent);
+transition: background var(--motion-fast) var(--ease-out), transform var(--motion-normal) var(--ease-out);
+}
+@media (prefers-reduced-motion: reduce) {
+.role-card { transition: none; }
 }
 .ledger__row:last-child { border-bottom: var(--hairline) solid var(--border-default); }
 .ledger__term {

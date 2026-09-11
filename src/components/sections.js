@@ -57,6 +57,25 @@ function statement(s) {
 
 /* -- Ledger -------------------------------------------------------------- */
 function ledger(s) {
+  // If there are exactly four rows, render an interactive 2x2 role grid
+  if (Array.isArray(s.rows) && s.rows.length === 4) {
+    const cards = s.rows.map((r, i) => `
+            <div class="role-card" role="button" tabindex="0" data-role-index="${i}" aria-pressed="false">
+              <div class="role-card__indicator" aria-hidden="true"></div>
+              <h3 class="role-card__title">${esc(r.term)}</h3>
+              <p class="role-card__desc">${esc(r.definition)}</p>
+            </div>`).join('');
+
+    const body = `
+          <h2 class="section__heading">${esc(s.heading)}</h2>
+          ${intro(s.intro)}
+          <div class="role-grid" role="list">${cards}
+          </div>
+          ${footnote(s.footnote)}
+          ${actionLink(s.action)}`;
+    return section(spine(s.index, s.kicker, body));
+  }
+
   const rows = s.rows.map(r => `
             <div class="ledger__row">
               <dt class="ledger__term">${esc(r.term)}</dt>
