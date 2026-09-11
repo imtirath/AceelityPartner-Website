@@ -111,7 +111,7 @@ function main() {
   }
 
   /* --- Styles and script ------------------------------------------------ */
-  const css = ['tokens', 'base', 'components']
+  const css = ['fonts', 'tokens', 'base', 'components']
     .map(f => fs.readFileSync(path.join(ROOT, 'src', 'styles', `${f}.css`), 'utf8'))
     .join('\n');
   const cssBytes = write('assets/accelity.css', squeezeCSS(css));
@@ -119,6 +119,10 @@ function main() {
 
   /* --- Brand assets ----------------------------------------------------- */
   copyDir(path.join(ROOT, 'assets', 'brand'), path.join(DIST, 'assets', 'brand'));
+  // Copy any self-hosted fonts placed in assets/fonts
+  if (fs.existsSync(path.join(ROOT, 'assets', 'fonts'))) {
+    copyDir(path.join(ROOT, 'assets', 'fonts'), path.join(DIST, 'assets', 'fonts'));
+  }
 
   /* --- robots.txt and sitemap ------------------------------------------- */
   const routes = built.filter(([p]) => !p.endsWith('.html')).map(([p]) => p);

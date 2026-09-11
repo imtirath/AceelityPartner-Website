@@ -1,0 +1,26 @@
+/* Self-hosted font declarations for Inter / Inter Display.
+   Place licensed woff2/woff files in /assets/fonts/ and the build will copy them
+   into /dist/assets/fonts. Use `font-display: swap` to avoid invisible text.
+*/
+
+@font-face {
+  font-family: 'InterVariable';
+  src: url('/assets/fonts/Inter-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'InterDisplay';
+  src: url('/assets/fonts/Inter-Display.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallback aliasing used by tokens.css */
+:root {
+  --accelity-font-display: 'InterDisplay', 'InterVariable', 'Inter', Arial, sans-serif;
+  --accelity-font-body: 'InterVariable', 'Inter', Arial, sans-serif;
+}
