@@ -1,0 +1,10 @@
+# Node / system
+node_modules/
+.DS_Store
+
+# Ignore self-hosted font binaries by default to avoid accidental commits
+assets/fonts/*.woff2
+assets/fonts/*.woff
+
+# Dist output
+dist/
