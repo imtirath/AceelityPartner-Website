@@ -1,0 +1,14 @@
+{
+  "name": "accelity-partners-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Accelity Partners corporate website — static build, zero runtime dependencies.",
+  "scripts": {
+    "assets": "python3 tools/restore-logo-alpha.py && python3 tools/make-og-image.py",
+    "projection": "node tools/build-public-projection.js",
+    "build": "npm run projection && node build.js",
+    "serve": "node serve.js",
+    "start": "npm run build && npm run serve"
+  },
+  "engines": { "node": ">=18" }
+}

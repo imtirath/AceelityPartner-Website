@@ -1,0 +1,141 @@
+{
+  "slug": "",
+  "title": "Accelity Partners — a venture-building and holding company",
+  "metaDescription": "Accelity Partners creates, incubates, acquires and scales businesses across sectors, combining entrepreneurship with shared technology, talent, capital and execution.",
+  "sections": [
+    {
+      "type": "hero",
+      "eyebrow": "Accelity Partners",
+      "headline": [
+        "Growth.",
+        "Built Together."
+      ],
+      "support": "A venture-building and holding company, creating and scaling businesses across sectors.",
+      "actions": [
+        {
+          "label": "Explore Accelity",
+          "href": "/about/",
+          "variant": "primary"
+        },
+        {
+          "label": "Connect with us",
+          "href": "/connect/",
+          "variant": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "statement",
+      "index": "01",
+      "kicker": "What we do",
+      "heading": "We build businesses. We compound capabilities.",
+      "lead": "Accelity Partners creates, incubates, acquires and scales businesses. We bring together entrepreneurship, technology, talent, capital and execution to build enduring ventures, each with its own purpose and accountable leadership.",
+      "aside": "Our common thread is not one industry. It is the capability to build enduring businesses through entrepreneurship, technology and AI, talent, capital, systems and execution."
+    },
+    {
+      "type": "ledger",
+      "index": "02",
+      "kicker": "Who we are",
+      "heading": "Builders. Owners. Partners. Enablers.",
+      "intro": "Four complementary roles, connected by an entrepreneurial and long-term ownership mindset.",
+      "rows": [
+        {
+          "term": "Build",
+          "definition": "Create and incubate our own ventures, shaping the proposition, business model, leadership and capabilities."
+        },
+        {
+          "term": "Own",
+          "definition": "Acquire and hold equity interests, stewarding long-term value through responsible ownership and governance."
+        },
+        {
+          "term": "Partner",
+          "definition": "Work with selected businesses and entrepreneurial teams through an agreed equity or strategic relationship."
+        },
+        {
+          "term": "Enable",
+          "definition": "Offer focused business consultancy where appropriate, without implying ownership."
+        }
+      ],
+      "footnote": "Consultancy is one engagement model. It is not the primary definition of Accelity Partners.",
+      "action": {
+        "label": "Read our approach",
+        "href": "/approach/"
+      }
+    },
+    {
+      "type": "sequence",
+      "index": "03",
+      "kicker": "The compounding model",
+      "heading": "Build capability. Reuse it. Strengthen the group.",
+      "intro": "A long-term business-building model, not a promise of automatic success.",
+      "steps": [
+        {
+          "label": "Build a venture",
+          "detail": "Create a clear model, capable team and operating system."
+        },
+        {
+          "label": "Develop capability",
+          "detail": "Generate expertise, systems, evidence and credibility."
+        },
+        {
+          "label": "Reuse selectively",
+          "detail": "Apply relevant strengths across the portfolio."
+        },
+        {
+          "label": "Scale the next",
+          "detail": "Launch, acquire or strengthen the next opportunity."
+        },
+        {
+          "label": "Strengthen the group",
+          "detail": "Improve shared capability and institutional knowledge."
+        },
+        {
+          "label": "Reinvest responsibly",
+          "detail": "Allocate available capital and capability to the next stage."
+        }
+      ],
+      "footnote": "Reuse is selective: we respect venture needs, confidentiality, permissions and separate financial responsibilities."
+    },
+    {
+      "type": "matrix",
+      "index": "04",
+      "kicker": "Why multiple sectors",
+      "heading": "Different sectors. Shared capabilities.",
+      "intro": "Our focus is building businesses. We expand where relevant capabilities can create an advantage, applying what we learn while respecting the expertise, economics and responsibilities of each venture.",
+      "items": [
+        {
+          "term": "Entrepreneurship",
+          "definition": "Opportunity selection and business-model creation."
+        },
+        {
+          "term": "Technology and AI",
+          "definition": "Reusable systems, automation and applied intelligence."
+        },
+        {
+          "term": "People and execution",
+          "definition": "Leadership, operating processes and specialist expertise."
+        },
+        {
+          "term": "Capital and governance",
+          "definition": "Responsible allocation, decision-making and oversight."
+        },
+        {
+          "term": "Brand and distribution",
+          "definition": "Market-building, customer access and expansion capability."
+        }
+      ],
+      "footnote": "Each venture still needs sector expertise, sound economics and accountable leadership. A broad opportunity set is not a commitment to launch every category simultaneously."
+    },
+    {
+      "type": "closing",
+      "index": "05",
+      "heading": "Tell us what you are looking to build.",
+      "body": "Whether you are considering a partnership, an investment discussion or a specific venture, we will route your enquiry to the relevant team.",
+      "action": {
+        "label": "Connect with us",
+        "href": "/connect/",
+        "variant": "primary"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "purpose",
+  "title": "Purpose — Accelity Partners",
+  "metaDescription": "The economic and societal ambition behind Accelity Partners, and how mission-led institutions are held separately from commercial ventures.",
+  "sections": [
+    {
+      "type": "pageHeader",
+      "index": "Purpose",
+      "headline": "Enduring companies, measured by what they leave behind.",
+      "support": "The ambition is not how many businesses are launched."
+    },
+    {
+      "type": "statement",
+      "index": "01",
+      "kicker": "Long-term ambition",
+      "heading": "Entrepreneurial capability as an institutional asset.",
+      "lead": "Our vision is to build a multi-generational institution that repeatedly creates and scales businesses capable of generating economic, societal and national value.",
+      "aside": "That means building companies that become stronger over time rather than companies that depend on continual intervention."
+    },
+    {
+      "type": "ledger",
+      "index": "02",
+      "kicker": "What we intend to be measured by",
+      "heading": "The things worth counting.",
+      "rows": [
+        { "term": "Enduring companies", "definition": "Businesses that continue to operate and improve without depending on constant rescue." },
+        { "term": "Meaningful problems solved", "definition": "Whether the problem a venture set out to address is genuinely better addressed." },
+        { "term": "Livelihoods and opportunity", "definition": "The work, skills and opportunity that the group's companies generate." },
+        { "term": "Capability created", "definition": "The technology, systems and expertise that outlast any single venture." }
+      ],
+      "footnote": "We publish results with a baseline, a timeframe, a defined metric and a source, or we do not publish them."
+    },
+    {
+      "type": "note",
+      "index": "03",
+      "kicker": "Mission-led institutions",
+      "heading": "Held separately from commercial ventures.",
+      "body": [
+        "Alongside its commercial companies, the group plans not-for-profit institutions constituted under Section 8 of the Companies Act. Their purpose is societal and cultural rather than commercial, and their messaging is kept distinct from investment messaging.",
+        "These institutions are presented as planned initiatives. We will name them here once incorporation, remit and public wording have been confirmed and approved. Until then we describe the intent rather than implying an organisation already operates."
+      ],
+      "footnote": "A mission-led institution is not an investor-return vehicle and is not a lead-generation channel for the group's commercial companies."
+    },
+    {
+      "type": "closing",
+      "index": "04",
+      "heading": "Want to talk about the longer view?",
+      "body": "If your interest is in the institution rather than a single venture, start a conversation with the group.",
+      "action": { "label": "Connect with us", "href": "/connect/", "variant": "primary" }
+    }
+  ]
+}

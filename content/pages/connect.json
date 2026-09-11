@@ -1,0 +1,46 @@
+{
+  "slug": "connect",
+  "title": "Connect with Accelity Partners",
+  "metaDescription": "Tell us what you are looking to build or discuss, and we will route your enquiry to the relevant team at Accelity Partners.",
+  "sections": [
+    {
+      "type": "pageHeader",
+      "index": "Connect",
+      "headline": "Tell us what you are looking to build or discuss.",
+      "support": "We will route your enquiry to the relevant team."
+    },
+    {
+      "type": "form",
+      "index": "01",
+      "kicker": "Enquiry",
+      "heading": "Start a conversation",
+      "intro": "We collect only what we need in order to reply.",
+      "intents": [
+        { "value": "investment", "label": "Group investment", "help": "An investment discussion at Accelity Partners level." },
+        { "value": "partnership", "label": "Business partnership", "help": "An equity or strategic relationship with a business you run." },
+        { "value": "venture", "label": "A specific venture", "help": "You are trying to reach one of the group's businesses." },
+        { "value": "careers", "label": "Working with us", "help": "An expression of interest in joining a venture or the group." },
+        { "value": "general", "label": "Something else", "help": "General enquiries and media." }
+      ],
+      "fields": [
+        { "name": "name", "label": "Your name", "type": "text", "autocomplete": "name", "required": true },
+        { "name": "email", "label": "Email address", "type": "email", "autocomplete": "email", "required": true, "help": "We use this only to reply to your enquiry." },
+        { "name": "organisation", "label": "Organisation", "type": "text", "autocomplete": "organization", "required": false },
+        { "name": "message", "label": "What would you like to discuss?", "type": "textarea", "required": true, "help": "A few lines is enough. Please do not include confidential information in a first message." }
+      ],
+      "submitLabel": "Send enquiry",
+      "states": {
+        "success": "Thank you. Your enquiry has been received.",
+        "error": "We could not submit your enquiry. Please try again.",
+        "unrouted": "Enquiry routing is not connected yet. This form is complete but deliberately disabled, because sending a message that nobody receives would be worse than saying so. It will be enabled once a recipient, a retention rule and a privacy notice are in place."
+      }
+    },
+    {
+      "type": "closing",
+      "index": "02",
+      "heading": "Not sure which route fits?",
+      "body": "Choose the closest option. We would rather redirect an enquiry internally than have you guess at an address.",
+      "action": { "label": "Read our approach", "href": "/approach/", "variant": "secondary" }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "generatedFrom": "private/venture-register.team.json",
+  "generatedAt": "2026-09-11",
+  "releaseConditions": [
+    "visibilityAllowsExternal",
+    "revisionApprovedForPublication",
+    "publicDescriptionApproved",
+    "operatingStageVerified",
+    "relationshipVerified",
+    "destinationVerified",
+    "notDraft"
+  ],
+  "ventures": []
+}

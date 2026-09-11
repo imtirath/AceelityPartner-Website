@@ -1,0 +1,81 @@
+{
+  "slug": "approach",
+  "title": "Our approach — Accelity Partners",
+  "metaDescription": "Build, Own, Partner and Enable: how Accelity Partners builds businesses, why the group spans sectors and how capability is reused selectively between ventures.",
+  "sections": [
+    {
+      "type": "pageHeader",
+      "index": "Approach",
+      "headline": "Four roles. One way of building.",
+      "support": "We take the role a business actually needs, and we say which one it is."
+    },
+    {
+      "type": "ledger",
+      "index": "01",
+      "kicker": "Who we are",
+      "heading": "Builders. Owners. Partners. Enablers.",
+      "intro": "Four complementary roles, connected by an entrepreneurial and long-term ownership mindset. Each carries a different relationship, and we describe that relationship accurately.",
+      "rows": [
+        { "term": "Build", "definition": "Create and incubate our own ventures. We shape the proposition, business model, leadership and capabilities from the beginning." },
+        { "term": "Own", "definition": "Acquire and hold equity interests in businesses. We steward long-term value through responsible ownership and governance." },
+        { "term": "Partner", "definition": "Work with selected businesses and entrepreneurial teams. We combine strengths through an agreed equity or strategic relationship." },
+        { "term": "Enable", "definition": "Offer focused business consultancy where appropriate. We apply practical expertise to a defined challenge without implying ownership." }
+      ],
+      "footnote": "Consultancy is one engagement model. It is not the primary definition of Accelity Partners."
+    },
+    {
+      "type": "matrix",
+      "index": "02",
+      "kicker": "Why multiple sectors",
+      "heading": "Different sectors. Shared capabilities.",
+      "intro": "Accelity does not seek diversification for its own sake. We look for opportunities where capabilities built in one venture can strengthen the next.",
+      "items": [
+        { "term": "Entrepreneurship", "definition": "Identifying meaningful opportunities and developing workable business models." },
+        { "term": "Technology and AI", "definition": "Building reusable systems, automation and applied intelligence where useful." },
+        { "term": "People and execution", "definition": "Developing leadership, operating processes and specialist expertise." },
+        { "term": "Capital and governance", "definition": "Responsible allocation, clear decisions and accountable oversight." },
+        { "term": "Brand and distribution", "definition": "Building markets, customer access and repeatable expansion capability." }
+      ],
+      "footnote": "Shared capability does not mean unrestricted sharing of customer data, money or decision rights. Each venture still needs sector expertise, sound economics and accountable leadership."
+    },
+    {
+      "type": "sequence",
+      "index": "03",
+      "kicker": "The compounding model",
+      "heading": "Build capability. Reuse it. Strengthen the group.",
+      "intro": "A long-term business-building model, not a promise of automatic success.",
+      "steps": [
+        { "label": "Build a venture", "detail": "Create a clear model, capable team and operating system." },
+        { "label": "Develop capability", "detail": "Generate expertise, systems, evidence and credibility." },
+        { "label": "Reuse selectively", "detail": "Apply relevant strengths across the portfolio." },
+        { "label": "Scale the next", "detail": "Launch, acquire or strengthen the next opportunity." },
+        { "label": "Strengthen the group", "detail": "Improve shared capability and institutional knowledge." },
+        { "label": "Reinvest responsibly", "detail": "Allocate available capital and capability to the next stage." }
+      ],
+      "footnote": "Reuse is selective: we respect venture needs, confidentiality, permissions and separate financial responsibilities."
+    },
+    {
+      "type": "table",
+      "index": "04",
+      "kicker": "Problems and opportunities",
+      "heading": "Turning opportunity into an enduring business.",
+      "intro": "Describe the challenge first. Then make the contribution tangible.",
+      "columns": ["The challenge", "Our contribution"],
+      "rows": [
+        ["A meaningful problem without a viable model", "Shape the proposition, economics and route to market."],
+        ["A vision without an execution path", "Build the team, priorities, systems and operating plan."],
+        ["Growth that strains the business", "Strengthen processes, technology and decision-making."],
+        ["Capabilities recreated in every venture", "Reuse relevant expertise while preserving venture accountability."],
+        ["Advice that stops at a presentation", "Stay close to execution and review progress with the team."]
+      ],
+      "footnote": "These describe our intended contribution, not guaranteed outcomes. Every published result or case study is supported by specific, approved evidence."
+    },
+    {
+      "type": "closing",
+      "index": "05",
+      "heading": "See how the group is structured.",
+      "body": "Our portfolio page explains the difference between the parent company, a sector platform, an operating company and the brand a customer recognises.",
+      "action": { "label": "View the portfolio", "href": "/portfolio/", "variant": "primary" }
+    }
+  ]
+}

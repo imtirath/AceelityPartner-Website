@@ -1,0 +1,75 @@
+{
+  "_comment": "Every field set to null is UNCONFIRMED in the supplied sources. The build omits null fields from the output rather than inventing a value. Fill them in only from verified, owner-approved information. See docs/GAPS.md.",
+
+  "brandName": "Accelity Partners",
+  "legalName": "Accelity Partners Pvt Ltd",
+  "tagline": "Growth. Built Together.",
+  "shortIntroduction": "Accelity Partners is a venture-building and holding company that creates, incubates, acquires and scales businesses across sectors, combining entrepreneurship with shared technology, talent, capital and execution capabilities.",
+  "coreMessage": "We build, own and scale businesses across sectors by compounding shared capabilities.",
+
+  "baseUrl": null,
+  "locale": "en-IN",
+  "language": "en",
+
+  "contact": {
+    "email": null,
+    "telephone": null,
+    "addressLines": null,
+    "cin": null,
+    "registeredOfficeVerified": false
+  },
+
+  "social": [],
+
+  "enquiry": {
+    "endpoint": null,
+    "privacyNoticeUrl": null,
+    "responseTimeCommitment": null
+  },
+
+  "legalPages": {
+    "privacy": { "publish": false, "reason": "Requires legal review and verified entity details." },
+    "terms": { "publish": false, "reason": "Requires legal review; applicability not yet determined." }
+  },
+
+  "navigation": [
+    { "label": "About", "href": "/about/" },
+    { "label": "Approach", "href": "/approach/" },
+    { "label": "Portfolio", "href": "/portfolio/" },
+    { "label": "Purpose", "href": "/purpose/" }
+  ],
+
+  "headerAction": { "label": "Connect", "href": "/connect/" },
+
+  "footer": {
+    "columns": [
+      {
+        "heading": "Company",
+        "links": [
+          { "label": "About", "href": "/about/" },
+          { "label": "Purpose", "href": "/purpose/" }
+        ]
+      },
+      {
+        "heading": "How we work",
+        "links": [
+          { "label": "Approach", "href": "/approach/" },
+          { "label": "Portfolio", "href": "/portfolio/" }
+        ]
+      },
+      {
+        "heading": "Get in touch",
+        "links": [
+          { "label": "Connect", "href": "/connect/" }
+        ]
+      }
+    ],
+    "description": "Accelity Partners is a venture-building and holding company that creates, incubates, acquires and scales businesses across sectors."
+  },
+
+  "fonts": {
+    "_comment": "Inter and Inter Display are licensed under the SIL Open Font License 1.1. The CDN below is for review builds only. Self-host the licensed files before publication — see docs/HANDOFF.md.",
+    "cdn": "https://rsms.me/inter/inter.css",
+    "selfHosted": false
+  }
+}

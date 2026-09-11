@@ -1,0 +1,79 @@
+{
+  "slug": "about",
+  "title": "About Accelity Partners",
+  "metaDescription": "Accelity Partners is a venture-building and holding company. Our mission, our vision and the principles that define how we build and hold businesses.",
+  "sections": [
+    {
+      "type": "pageHeader",
+      "index": "About",
+      "headline": "A venture-building institution that creates, scales and strengthens businesses.",
+      "support": "Entrepreneurial in ambition. Disciplined in execution. Long-term in outlook."
+    },
+    {
+      "type": "statement",
+      "index": "01",
+      "kicker": "What Accelity Partners is",
+      "heading": "The capability to build enduring businesses.",
+      "lead": "Accelity Partners Pvt Ltd is a venture-building and holding company that creates, incubates, acquires and scales businesses across sectors. We build our own ventures and work with selected businesses where an ownership or partnership model can create long-term value.",
+      "aside": "Each venture has its own purpose and leadership, strengthened by relevant capabilities within the wider group."
+    },
+    {
+      "type": "quotePair",
+      "index": "02",
+      "kicker": "Mission and vision",
+      "items": [
+        { "term": "Our mission", "definition": "To build and scale enduring businesses by combining entrepreneurship, technology, capital, operating discipline and shared capabilities across sectors." },
+        { "term": "Our vision", "definition": "To build a multi-generational institution that repeatedly creates and scales businesses capable of generating economic, societal and national value." }
+      ],
+      "footnote": "The mission describes our contribution. The vision describes the institution we aim to become."
+    },
+    {
+      "type": "ledger",
+      "index": "03",
+      "kicker": "Defining our brand",
+      "heading": "Four principles that hold across every venture.",
+      "rows": [
+        { "term": "Purposeful entrepreneurship", "definition": "Identify meaningful opportunities and build business models around them." },
+        { "term": "Shared capability", "definition": "Strengthen technology, talent, governance and execution that can benefit the group." },
+        { "term": "Accountable autonomy", "definition": "Give venture leaders room to execute, with clear priorities and responsibility." },
+        { "term": "Enduring value", "definition": "Build businesses that become stronger over time, not dependent on continual intervention." }
+      ]
+    },
+    {
+      "type": "contrast",
+      "index": "04",
+      "kicker": "How we talk about progress",
+      "heading": "Conviction in the vision, separate from evidence of performance.",
+      "intro": "We describe the institution we are building without guaranteeing results. Where we publish an outcome, we publish its context and its limits.",
+      "columns": [
+        {
+          "heading": "We do sound like",
+          "items": [
+            "We build, own and scale businesses across sectors.",
+            "We expand where shared capabilities create an advantage.",
+            "Each venture has its own leadership and accountability.",
+            "We connect entrepreneurship with disciplined execution.",
+            "Our ambition is to build enduring institutions."
+          ]
+        },
+        {
+          "heading": "We do not sound like",
+          "items": [
+            "We are a consultancy that can fix any business.",
+            "Every category is an opportunity we must enter now.",
+            "One formula. Every company. Guaranteed success.",
+            "We guarantee rapid, exponential growth.",
+            "Our planned portfolio already proves our success."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "closing",
+      "index": "05",
+      "heading": "Understand how we build.",
+      "body": "Our approach sets out the four roles we take, why the group spans sectors and how capability is reused between ventures.",
+      "action": { "label": "Read our approach", "href": "/approach/", "variant": "primary" }
+    }
+  ]
+}

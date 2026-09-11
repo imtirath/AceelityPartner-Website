@@ -1,0 +1,58 @@
+{
+  "slug": "portfolio",
+  "title": "Portfolio and group structure — Accelity Partners",
+  "metaDescription": "How the Accelity Partners group is structured: the parent company, sector platforms, operating companies and market-facing brands, and how each relationship is described.",
+  "sections": [
+    {
+      "type": "pageHeader",
+      "index": "Portfolio",
+      "headline": "One group. Distinct companies. Clear roles.",
+      "support": "The brand a customer recognises is rarely the name of the legal entity. We keep the difference visible."
+    },
+    {
+      "type": "layers",
+      "index": "01",
+      "kicker": "Brand architecture",
+      "heading": "Four things worth separating.",
+      "intro": "Not every venture needs every layer. Some operating companies sit directly under Accelity Partners.",
+      "items": [
+        { "term": "Parent company", "definition": "Accelity Partners — the venture-building and holding company." },
+        { "term": "Sector holding platform", "definition": "Used where it is relevant to the group structure, not created to fill a navigation group." },
+        { "term": "Operating company", "definition": "The entity responsible for running the business." },
+        { "term": "Market-facing brand", "definition": "The identity customers know and use." }
+      ],
+      "footnote": "We use the verified company tree. We do not create extra entities through design or shorthand."
+    },
+    {
+      "type": "ledger",
+      "index": "02",
+      "kicker": "Relationships",
+      "heading": "A parent endorsement, not a visual takeover.",
+      "intro": "Each venture retains the identity that serves its audience. We apply an endorsement only once the relationship is verified and approved, and we use the wording that matches it.",
+      "rows": [
+        { "term": "An Accelity Partners company", "definition": "An owned venture. The venture remains the lead identity." },
+        { "term": "In partnership with Accelity Partners", "definition": "A strategic relationship, described as agreed. It does not imply ownership or control." },
+        { "term": "Advised by Accelity Partners", "definition": "An advisory engagement, named only with the client's approval." }
+      ],
+      "footnote": "We never present an advisory client as a portfolio company."
+    },
+    {
+      "type": "ventures",
+      "index": "03",
+      "kicker": "Our ventures",
+      "heading": "Ventures are published once they are verified.",
+      "emptyState": {
+        "heading": "No venture profile has completed publication review yet.",
+        "body": "A venture appears here only when its release permission covers a public audience, the exact wording has been approved, and its operating stage and relationship to the group have been verified. Nothing on this page is a count of the group's companies.",
+        "action": { "label": "Ask about a specific venture", "href": "/connect/?intent=venture" }
+      }
+    },
+    {
+      "type": "closing",
+      "index": "04",
+      "heading": "Looking for a particular business?",
+      "body": "If you are trying to reach a specific venture, or you want to discuss a partnership at group level, tell us which and we will route it.",
+      "action": { "label": "Connect with us", "href": "/connect/", "variant": "primary" }
+    }
+  ]
+}

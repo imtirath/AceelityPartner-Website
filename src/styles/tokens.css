@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Accelity Partners — design tokens
+   --------------------------------------------------------------------------
+   BLOCK A  Inherited brand constants. Sourced verbatim from
+            brand-specifications.json / brand-tokens.css (Brand Guidelines
+            v1.1). Do not change these without brand-owner approval.
+   BLOCK B  Proposed implementation tokens. Web-specific decisions made for
+            this build: spacing, type scale, layout, motion, semantic roles.
+            These are design-system decisions, not inherited brand rules.
+   ========================================================================== */
+
+:root {
+  /* --- BLOCK A: inherited brand constants ------------------------------- */
+  --accelity-acceleration-orange: #F58220;
+  --accelity-foundation-navy: #0B2D4B;
+  --accelity-white: #FFFFFF;
+  --accelity-slate: #536575;
+  --accelity-mist: #F4F6F8;
+  --accelity-line-grey: #DDE4EB;
+
+  --accelity-font-display: "InterDisplay", "Inter Display", "InterVariable", "Inter", Arial, sans-serif;
+  --accelity-font-body: "InterVariable", "Inter", Arial, sans-serif;
+
+  /* --- BLOCK B: semantic roles ------------------------------------------ */
+  --surface-canvas: var(--accelity-white);
+  --surface-subtle: var(--accelity-mist);
+  --surface-inverse: var(--accelity-foundation-navy);
+
+  --text-primary: var(--accelity-foundation-navy);
+  --text-secondary: var(--accelity-slate);
+  --text-inverse: var(--accelity-white);
+  --text-inverse-secondary: rgba(255, 255, 255, 0.74);
+
+  --border-default: var(--accelity-line-grey);
+  --border-strong: rgba(11, 45, 75, 0.32);
+  --border-inverse: rgba(255, 255, 255, 0.22);
+
+  --accent: var(--accelity-acceleration-orange);
+  --on-accent: var(--accelity-foundation-navy); /* navy on orange = 5.43:1 */
+
+  /* Focus ring. Orange on white is 2.59:1, below the 3:1 non-text threshold,
+     so the ring is navy on light surfaces and white on the inverse surface. */
+  --focus-ring: var(--accelity-foundation-navy);
+
+  /* --- BLOCK B: type ---------------------------------------------------- */
+  --type-hero: clamp(2.75rem, 1.55rem + 5.4vw, 5.75rem);
+  --type-h1: clamp(2.125rem, 1.45rem + 3vw, 3.75rem);
+  --type-h2: clamp(1.625rem, 1.25rem + 1.7vw, 2.5rem);
+  --type-h3: clamp(1.125rem, 1.04rem + 0.38vw, 1.3125rem);
+  --type-lead: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+  --type-body: 1.0625rem;
+  --type-small: 0.9375rem;
+  --type-label: 0.8125rem;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.16;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.62;
+
+  --tracking-hero: -0.035em;
+  --tracking-heading: -0.022em;
+  --tracking-label: 0.005em;
+
+  --measure: 62ch;
+  --measure-lead: 40ch;
+
+  /* --- BLOCK B: space (4px base) ---------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  --section-space: clamp(3.5rem, 1.6rem + 7.2vw, 8.5rem);
+  --gutter: clamp(1.25rem, 0.4rem + 3.4vw, 4.5rem);
+  --container: 1280px;
+  --spine-gap: clamp(2rem, 0.4rem + 3.4vw, 4.5rem);
+
+  /* --- BLOCK B: shape and motion ---------------------------------------- */
+  --radius-control: 4px;
+  --hairline: 1px;
+
+  --motion-fast: 120ms;
+  --motion-normal: 220ms;
+  --motion-slow: 480ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --header-height: 4.5rem;
+}
+
+@media (min-width: 60rem) {
+  :root { --header-height: 5.25rem; }
+}
