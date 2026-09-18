@@ -7,7 +7,8 @@
       "type": "pageHeader",
       "index": "Approach",
       "headline": "Four roles. One way of building.",
-      "support": "We take the role a business actually needs, and we say which one it is."
+      "support": "We take the role a business actually needs, and we say which one it is.",
+      "image": { "src": "/assets/hero/approach.png", "width": 1956, "height": 804 }
     },
     {
       "type": "ledger",

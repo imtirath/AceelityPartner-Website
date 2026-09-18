@@ -119,9 +119,32 @@ function main() {
 
   /* --- Brand assets ----------------------------------------------------- */
   copyDir(path.join(ROOT, 'assets', 'brand'), path.join(DIST, 'assets', 'brand'));
+  // Provide high-density fallbacks for brand assets by duplicating files
+  try {
+    const brandDist = path.join(DIST, 'assets', 'brand');
+    const dupMap = [
+      ['logo-horizontal-primary.png', 'logo-horizontal-primary@2x.png'],
+      ['logo-horizontal-reversed.png', 'logo-horizontal-reversed@2x.png'],
+      ['logo-stacked-primary.png', 'logo-stacked-primary@2x.png'],
+      ['logo-stacked-reversed.png', 'logo-stacked-reversed@2x.png'],
+      ['logo-horizontal-tagline-primary.png', 'logo-horizontal-tagline-primary@2x.png'],
+      ['og-image.png', 'og-image@2x.png'],
+    ];
+    for (const [srcName, dstName] of dupMap) {
+      const src = path.join(brandDist, srcName);
+      const dst = path.join(brandDist, dstName);
+      if (fs.existsSync(src) && !fs.existsSync(dst)) fs.copyFileSync(src, dst);
+    }
+  } catch (e) {
+    // non-fatal — duplication is best-effort
+  }
   // Copy any self-hosted fonts placed in assets/fonts
   if (fs.existsSync(path.join(ROOT, 'assets', 'fonts'))) {
     copyDir(path.join(ROOT, 'assets', 'fonts'), path.join(DIST, 'assets', 'fonts'));
+  }
+  // Hero imagery (e.g. the mountain photograph behind the home hero)
+  if (fs.existsSync(path.join(ROOT, 'assets', 'hero'))) {
+    copyDir(path.join(ROOT, 'assets', 'hero'), path.join(DIST, 'assets', 'hero'));
   }
 
   /* --- robots.txt and sitemap ------------------------------------------- */

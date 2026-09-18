@@ -7,7 +7,8 @@
       "type": "pageHeader",
       "index": "Portfolio",
       "headline": "One group. Distinct companies. Clear roles.",
-      "support": "The brand a customer recognises is rarely the name of the legal entity. We keep the difference visible."
+      "support": "The brand a customer recognises is rarely the name of the legal entity. We keep the difference visible.",
+      "image": { "src": "/assets/hero/portfolio.png", "width": 1774, "height": 887 }
     },
     {
       "type": "layers",

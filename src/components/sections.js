@@ -4,31 +4,71 @@
  * type owns the semantics, the responsive behaviour and the states.
  */
 const { esc, attr, spine, button, actionLink, footnote, intro } = require('./primitives');
-const { capabilityDiagram } = require('./diagrams');
+const { flywheelDiagram } = require('./diagrams');
 
-/* -- Hero ---------------------------------------------------------------- */
+/* -- Hero -----------------------------------------------------------------
+   Restrained line icons for the value-proposition row. Each carries one
+   small Acceleration Orange accent; everything else is navy. */
+const VALUE_ICONS = {
+  sprout: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5V12" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linecap="round"/><path d="M12 12C12 8 9 6 5 6C5 10 8 12 12 12Z" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 12C12 8.6 14.6 6.8 18 6.6" stroke="var(--accent)" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  layers: `<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,4 21,8.5 12,13 3,8.5" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linejoin="round"/><polyline points="4.5,11.5 12,15.4 19.5,11.5" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><polyline points="4.5,14.9 12,18.8 19.5,14.9" stroke="var(--accent)" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+  network: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="2.3" fill="var(--accent)"/><path d="M8 17.6c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="var(--accent)" fill="none" stroke-width="1.6" stroke-linecap="round"/><circle cx="4.8" cy="9.6" r="2" fill="none" stroke="var(--accelity-foundation-navy)" stroke-width="1.6"/><path d="M1.6 17.2c0-1.9 1.4-3.3 3.2-3.3s3.2 1.4 3.2 3.3" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linecap="round"/><circle cx="19.2" cy="9.6" r="2" fill="none" stroke="var(--accelity-foundation-navy)" stroke-width="1.6"/><path d="M16 17.2c0-1.9 1.4-3.3 3.2-3.3s3.2 1.4 3.2 3.3" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  infinity: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 9.5c-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5c1.6 0 2.6-1 4-2.5" stroke="var(--accelity-foundation-navy)" fill="none" stroke-width="1.6" stroke-linecap="round"/><path d="M12.5 13.5c1.4 1.5 2.4 2.5 4 2.5 1.9 0 3.5-1.6 3.5-3.5s-1.6-3.5-3.5-3.5c-1.6 0-2.6 1-4 2.5" stroke="var(--accent)" fill="none" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+};
+
+function heroCta(action) {
+  if (!action) return '';
+  const variant = action.variant || 'primary';
+  const arrow = variant === 'primary' ? `<span class="hero__cta-arrow" aria-hidden="true">→</span>` : '';
+  return `<a class="button button--${esc(variant)} hero__cta" href="${esc(action.href)}">${esc(action.label)}${arrow}</a>`;
+}
+
 function hero(s) {
-  const lines = s.headline.map(line => `<span>${esc(line)}</span>`).join('\n            ');
+  const lines = s.headline.map((line, i) => `<span>${esc(line)}${i === s.headline.length - 1 ? '<span class="hero__accent-dot" aria-hidden="true"></span>' : ''}</span>`).join('\n            ');
+
+  const wordmarks = s.wordmarks.map(w => `<li>${esc(w)}</li>`).join('');
+
+  const valueProps = s.valueProps.map(v => `
+          <div class="hero__value" role="listitem">
+            <span class="hero__value-icon">${VALUE_ICONS[v.icon] || ''}</span>
+            <span class="hero__value-text">
+              <span class="hero__value-title">${esc(v.title)}</span>
+              <span class="hero__value-detail">${esc(v.detail)}</span>
+            </span>
+          </div>`).join('');
+
+  const editorial = s.editorial.map(line => `<span>${esc(line)}</span>`).join('\n              ');
+
   return `
   <section class="hero">
-    <div class="container">
+    <div class="hero__mountain" aria-hidden="true">
+      <img src="${esc(s.mountain.src)}" width="${esc(s.mountain.width)}" height="${esc(s.mountain.height)}" alt="" loading="eager" fetchpriority="high" decoding="async">
+    </div>
+    <div class="container hero__container">
       <div class="hero__grid">
         <div class="hero__content">
-          <p class="hero__eyebrow" data-reveal="1">${esc(s.eyebrow)}</p>
+          <div class="hero__eyebrow" data-reveal="1">
+            <span class="hero__eyebrow-rule" aria-hidden="true"></span>
+            <ul class="hero__wordmarks">${wordmarks}</ul>
+          </div>
           <h1 class="hero__headline" data-reveal="2">
             ${lines}
           </h1>
-        </div>
-        <div class="hero__visual">
-          ${capabilityDiagram()}
-          <div class="hero__aside">
-            <hr class="hero__rule" data-reveal="2">
-            <p class="hero__support" data-reveal="3">${esc(s.support)}</p>
-            <div class="hero__actions button-row" data-reveal="3">
-              ${s.actions.map(a => button(a)).join('\n            ')}
-            </div>
+          <p class="hero__support" data-reveal="3">${esc(s.support)}</p>
+          <div class="hero__actions button-row" data-reveal="3">
+            ${s.actions.map(a => heroCta(a)).join('\n            ')}
           </div>
         </div>
+        <div class="hero__visual" data-reveal="2">
+          ${flywheelDiagram(s.flywheel)}
+        </div>
+      </div>
+
+      <div class="hero__values" role="list" data-reveal="4">${valueProps}
+        <p class="hero__editorial" role="listitem">
+          <span class="hero__editorial-rule" aria-hidden="true"></span>
+          ${editorial}
+        </p>
       </div>
     </div>
   </section>`;
@@ -36,8 +76,13 @@ function hero(s) {
 
 /* -- Page header --------------------------------------------------------- */
 function pageHeader(s) {
+  const media = s.image ? `
+    <div class="page-header__media" aria-hidden="true">
+      <img src="${esc(s.image.src)}" width="${esc(s.image.width)}" height="${esc(s.image.height)}" alt="" loading="eager" fetchpriority="high" decoding="async">
+    </div>` : '';
   return `
-  <section class="page-header">
+  <section class="page-header${s.image ? ' page-header--media' : ''}">
+    ${media}
     <div class="container">
       <p class="page-header__index">${esc(s.index)}</p>
       <h1 class="page-header__headline">${esc(s.headline)}</h1>
@@ -228,13 +273,19 @@ function ventures(s, ctx) {
   } else {
     content = `
           <div class="venture-grid">
-            ${published.map(v => `
+            ${published.map(v => {
+              const img = v.image ? `<img class="venture-card__image" src="/assets/ventures/${esc(v.image)}"${v.image2x ? ` srcset="/assets/ventures/${esc(v.image)} 1x, /assets/ventures/${esc(v.image2x)} 2x"` : ''} alt="${esc(v.brand)}">` : '';
+              return `
             <article class="venture-card">
-              <h3 class="venture-card__brand">${esc(v.brand)}</h3>
-              ${v.purpose ? `<p class="venture-card__purpose">${esc(v.purpose)}</p>` : ''}
-              ${(v.stage || v.relationship) ? `<p class="venture-card__meta">${esc([v.stage, v.relationship].filter(Boolean).join(' · '))}</p>` : ''}
-              ${v.href ? `<a class="action-link" href="${esc(v.href)}">Visit ${esc(v.brand)}</a>` : ''}
-            </article>`).join('')}
+              ${img}
+              <div class="venture-card__content">
+                <h3 class="venture-card__brand">${esc(v.brand)}</h3>
+                ${v.purpose ? `<p class="venture-card__purpose">${esc(v.purpose)}</p>` : ''}
+                ${(v.stage || v.relationship) ? `<p class="venture-card__meta">${esc([v.stage, v.relationship].filter(Boolean).join(' · '))}</p>` : ''}
+                ${v.href ? `<a class="action-link" href="${esc(v.href)}">Visit ${esc(v.brand)}</a>` : ''}
+              </div>
+            </article>`;
+            }).join('')}
           </div>`;
   }
 

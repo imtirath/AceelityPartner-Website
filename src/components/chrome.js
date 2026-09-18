@@ -23,7 +23,7 @@ function header(site, currentPath) {
   <header class="site-header" data-site-header>
     <div class="container site-header__inner">
       <a class="site-header__logo" href="/" aria-label="${esc(site.brandName)} — home">
-        <img src="/assets/brand/logo-horizontal-primary.png" width="1568" height="336"
+        <img src="/assets/brand/logo-horizontal-primary.png" srcset="/assets/brand/logo-horizontal-primary.png 1x, /assets/brand/logo-horizontal-primary@2x.png 2x" width="1568" height="336"
              alt="${esc(site.brandName)}" fetchpriority="high" decoding="async">
       </a>
 
@@ -78,7 +78,7 @@ function footer(site) {
       <div class="site-footer__top">
         <div>
           <a class="site-footer__logo" href="/" aria-label="${esc(site.brandName)} — home">
-            <img src="/assets/brand/logo-horizontal-reversed.png" width="1568" height="336"
+            <img src="/assets/brand/logo-horizontal-reversed.png" srcset="/assets/brand/logo-horizontal-reversed.png 1x, /assets/brand/logo-horizontal-reversed@2x.png 2x" width="1568" height="336"
                  alt="${esc(site.brandName)}" loading="lazy" decoding="async">
           </a>
           <p class="site-footer__description">${esc(site.footer.description)}</p>

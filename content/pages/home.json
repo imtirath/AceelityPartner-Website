@@ -5,12 +5,12 @@
   "sections": [
     {
       "type": "hero",
-      "eyebrow": "Accelity Partners",
+      "wordmarks": ["Ideas", "People", "Capital", "Capabilities", "Impact"],
       "headline": [
         "Growth.",
         "Built Together."
       ],
-      "support": "A venture-building and holding company, creating and scaling businesses across sectors.",
+      "support": "We build, back, and scale businesses — combining capital, capabilities, and entrepreneurial execution to create enduring companies.",
       "actions": [
         {
           "label": "Explore Accelity",
@@ -22,7 +22,25 @@
           "href": "/connect/",
           "variant": "secondary"
         }
-      ]
+      ],
+      "flywheel": {
+        "caption": ["A flywheel", "for a brighter", "tomorrow"],
+        "nodes": [
+          { "key": "capabilities", "label": "Capabilities", "detail": "Build once. Scale across." },
+          { "key": "venture", "label": "Venture", "detail": "Build. Scale. Create value." },
+          { "key": "reuse", "label": "Reuse", "detail": "Apply. Adapt. Accelerate." },
+          { "key": "compound", "label": "Compound", "detail": "Multiply what works." },
+          { "key": "next-venture", "label": "Next Venture", "detail": "New opportunities. Greater impact." }
+        ]
+      },
+      "valueProps": [
+        { "icon": "sprout", "title": "Businesses", "detail": "Built & Backed" },
+        { "icon": "layers", "title": "Sectors", "detail": "Diverse Opportunities" },
+        { "icon": "network", "title": "Shared Platform", "detail": "Stronger Together" },
+        { "icon": "infinity", "title": "Long-term Impact", "detail": "Compounding Possibilities" }
+      ],
+      "editorial": ["Bolder", "Businesses", "Brighter", "Tomorrows"],
+      "mountain": { "src": "/assets/hero/mountain.png", "width": 1956, "height": 804 }
     },
     {
       "type": "statement",

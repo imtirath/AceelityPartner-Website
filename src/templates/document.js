@@ -63,6 +63,7 @@ function document({ site, page, body, path }) {
   <meta property="og:locale" content="${esc(site.locale.replace('-', '_'))}">
   ${canonical ? `<meta property="og:url" content="${esc(canonical)}">` : ''}
   ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">
+  <meta property="og:image" content="${esc(absolute(site, '/assets/brand/og-image@2x.png'))}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="${esc(site.brandName)} — ${esc(site.tagline)}">

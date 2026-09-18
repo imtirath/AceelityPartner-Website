@@ -13,9 +13,32 @@
   var panel = document.querySelector('[data-mobile-nav]');
 
   if (toggle && panel) {
+    var lastFocus = null;
+    var trapHandler = null;
     var setOpen = function (open) {
       toggle.setAttribute('aria-expanded', String(open));
       panel.setAttribute('data-open', String(open));
+      if (open) {
+        lastFocus = document.activeElement;
+        // focus first focusable element inside the panel
+        var first = panel.querySelector('a, button, input, [tabindex]:not([tabindex="-1"])');
+        if (first) first.focus();
+        // trap Tab within the panel
+        trapHandler = function (ev) {
+          if (ev.key !== 'Tab') return;
+          var focusables = Array.from(panel.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])')).filter(function (n) { return !n.disabled; });
+          if (!focusables.length) return;
+          var firstEl = focusables[0];
+          var lastEl = focusables[focusables.length - 1];
+          if (ev.shiftKey && document.activeElement === firstEl) { ev.preventDefault(); lastEl.focus(); }
+          else if (!ev.shiftKey && document.activeElement === lastEl) { ev.preventDefault(); firstEl.focus(); }
+        };
+        document.addEventListener('keydown', trapHandler);
+      } else {
+        if (trapHandler) { document.removeEventListener('keydown', trapHandler); trapHandler = null; }
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        lastFocus = null;
+      }
     };
 
     toggle.addEventListener('click', function () {
@@ -25,7 +48,6 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
         setOpen(false);
-        toggle.focus();
       }
     });
 

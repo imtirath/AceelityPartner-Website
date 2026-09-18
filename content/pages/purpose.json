@@ -7,7 +7,8 @@
       "type": "pageHeader",
       "index": "Purpose",
       "headline": "Enduring companies, measured by what they leave behind.",
-      "support": "The ambition is not how many businesses are launched."
+      "support": "The ambition is not how many businesses are launched.",
+      "image": { "src": "/assets/hero/purpose.png", "width": 1672, "height": 941 }
     },
     {
       "type": "statement",

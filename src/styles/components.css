@@ -7,6 +7,13 @@
 :root {
   --container: 1360px; /* editorial max width */
   --logo-height: 2rem; /* default header logo size */
+  /* Component-level spacing tokens (map to design tokens) */
+  --button-min-height: 2.875rem;
+  --button-padding-y: var(--space-3);
+  --button-padding-x: calc(var(--space-6) - 0.125rem);
+  --nav-toggle-min-height: 2.75rem;
+  --nav-toggle-padding-x: 0.875rem;
+  --indicator-width: 2.25rem; /* 36px */
 }
 
 
@@ -15,8 +22,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.875rem;
-  padding: 0.75rem 1.375rem;
+  min-height: var(--button-min-height);
+  padding: var(--button-padding-y) var(--button-padding-x);
   border: var(--hairline) solid transparent;
   border-radius: var(--radius-control);
   font-family: var(--accelity-font-body);
@@ -166,8 +173,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 2.75rem;
-  padding: 0.5rem 0.875rem;
+  min-height: var(--nav-toggle-min-height);
+  padding: var(--space-2) var(--nav-toggle-padding-x);
   background: transparent;
   border: var(--hairline) solid var(--border-strong);
   border-radius: var(--radius-control);
@@ -220,58 +227,354 @@
 .mobile-nav__link[aria-current="page"] { color: var(--accent); }
 .mobile-nav .button { margin-top: var(--space-6); width: 100%; }
 
-/* --- Hero --------------------------------------------------------------- */
+/* --- Hero -----------------------------------------------------------------
+   Confident, editorial, restrained: white / navy / orange, the flywheel and
+   the mountain photograph doing the atmosphere instead of gradients or
+   cards. `overflow: hidden` on the section is the safety net that keeps the
+   absolutely-positioned mountain layer from ever causing horizontal scroll. */
 .hero {
-  padding-block: clamp(3rem, 1rem + 8vw, 8rem) var(--section-space);
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-canvas);
+  padding-block: clamp(1rem, 0.5rem + 1.6vw, 1.75rem) clamp(0.75rem, 0.4rem + 1vw, 1.25rem);
 }
-.hero__eyebrow {
+.hero__container { position: relative; z-index: 1; }
+
+/* Mountain photograph: an atmospheric anchor in the lower-right corner,
+   masked so it fades to white rather than ending in a hard rectangle. It
+   sits behind every other layer and never intercepts pointer events. */
+.hero__mountain {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: min(64%, 840px);
+  height: min(86%, 590px);
+  pointer-events: none;
+}
+.hero__mountain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 76% 50%;
+  /* An ellipse anchored at the far corner (where the building and sun sit)
+     fades in every direction at once — up, left, and diagonally — so
+     there's no single edge to see. The reach must be sized so the gradient
+     actually reaches 0 by the box's own edges: for a point on an edge
+     level with the anchor, "distance" as a fraction of the ellipse equals
+     box-size / reach, so a 160%-reach ellipse only gets that edge to ~30%
+     opacity — leaving a visible cutoff there regardless of what stops come
+     after. (It went unnoticed on the previous photo only because that
+     stretch of sky happened to be pale enough to hide it — busier image
+     content exposed it immediately.) 114% reach puts every edge point at
+     ~88% of the way through the ramp, comfortably inside the near-zero
+     tail below, while the stops still front-load enough solid core that
+     the photo doesn't read as washed out. */
+  -webkit-mask-image: radial-gradient(ellipse 114% 114% at 100% 100%,
+    #000 0%, #000 30%,
+    rgba(0, 0, 0, 0.86) 42%,
+    rgba(0, 0, 0, 0.64) 54%,
+    rgba(0, 0, 0, 0.42) 65%,
+    rgba(0, 0, 0, 0.24) 75%,
+    rgba(0, 0, 0, 0.1) 84%,
+    rgba(0, 0, 0, 0.03) 91%,
+    rgba(0, 0, 0, 0.008) 97%,
+    transparent 100%);
+  mask-image: radial-gradient(ellipse 114% 114% at 100% 100%,
+    #000 0%, #000 30%,
+    rgba(0, 0, 0, 0.86) 42%,
+    rgba(0, 0, 0, 0.64) 54%,
+    rgba(0, 0, 0, 0.42) 65%,
+    rgba(0, 0, 0, 0.24) 75%,
+    rgba(0, 0, 0, 0.1) 84%,
+    rgba(0, 0, 0, 0.03) 91%,
+    rgba(0, 0, 0, 0.008) 97%,
+    transparent 100%);
+}
+
+/* --- Eyebrow -------------------------------------------------------------- */
+.hero__eyebrow { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-4); }
+.hero__eyebrow-rule { display: inline-block; flex: none; width: 2.25rem; height: 2px; background: var(--accent); }
+.hero__wordmarks { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); list-style: none; }
+.hero__wordmarks li {
   font-size: var(--type-label);
   font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--text-secondary);
-  letter-spacing: var(--tracking-label);
 }
+
+/* --- Headline --------------------------------------------------------------
+   The strongest element on the page, but sized so the whole hero — headline,
+   flywheel, value strip, mountain — reads as one compact composition rather
+   than a headline followed by a second scroll's worth of content. */
 .hero__headline {
-  margin-top: var(--space-6);
-  font-size: var(--type-hero);
+  margin-top: var(--space-2);
+  font-size: clamp(2.25rem, 0.85rem + 4.6vw, 4.75rem);
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-hero);
-}
-.hero__headline span { display: block; }
-.hero__rule {
-  margin-block: clamp(2rem, 1rem + 3vw, 3.5rem);
-  border: 0;
-  border-top: 2px solid var(--accent);
-  width: clamp(3rem, 10vw, 6rem);
-}
-.hero__support {
-  font-size: var(--type-lead);
-  line-height: var(--leading-relaxed);
-  max-width: 34ch;
   color: var(--text-primary);
 }
-.hero__actions { margin-top: var(--space-12); }
-
-@media (min-width: 60rem) {
-  /* 12-column editorial grid for hero composition */
-  .hero__grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--spine-gap);
-    align-items: end;
-    gap: 0;
-  }
-  .hero__content { grid-column: 1 / span 7; }
-  .hero__visual { grid-column: 9 / -1; align-self: center; }
-  .hero__rule { margin-bottom: var(--space-8); }
-  .hero__aside { padding-bottom: var(--space-2); }
+.hero__headline span { display: block; }
+.hero__accent-dot {
+  display: inline-block;
+  width: 0.15em;
+  height: 0.15em;
+  margin-inline-start: 0.14em;
+  margin-bottom: 0.06em;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
 }
 
-/* Capability diagram container in the hero */
-.hero__visual .capability-diagram { width: 100%; height: 100%; max-width: 480px; margin-left: auto; }
-.capability-diagram svg { width: 100%; height: auto; display: block; }
+.hero__support {
+  margin-top: var(--space-3);
+  font-size: clamp(1.0625rem, 0.95rem + 0.5vw, 1.375rem);
+  line-height: var(--leading-relaxed);
+  max-width: 32rem;
+  color: var(--text-secondary);
+}
+.hero__actions { margin-top: var(--space-4); }
+.hero__cta { display: inline-flex; align-items: center; gap: var(--space-2); }
+.hero__cta-arrow { display: inline-block; transition: transform var(--motion-normal) var(--ease-out); }
+.hero__cta:hover .hero__cta-arrow,
+.hero__cta:focus-visible .hero__cta-arrow { transform: translateX(5px); }
+
+.hero__visual { margin-top: var(--space-8); }
+
+@media (min-width: 60rem) {
+  /* Left column just over half: the headline is smaller now, so it no
+     longer needs an outsized share to stay on two lines, and a narrower
+     flywheel column keeps the two sides visually balanced. */
+  .hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    column-gap: clamp(1.25rem, 0.75rem + 1.5vw, 2.25rem);
+    align-items: start;
+  }
+  .hero__content { grid-column: 1; }
+  .hero__visual { grid-column: 2; margin-top: 0; }
+}
+
+/* --- Flywheel --------------------------------------------------------------
+   One circular orbit, five nodes, a single restrained orange arc that
+   travels the ring very slowly. Hovering or focusing a node emphasises its
+   own label, brightens the orbit segment leading into it, and quietens the
+   rest — see the `:has()` rules below. Every label is real, always-visible
+   text; the interaction is a progressive enhancement, not a reveal. */
+.flywheel { width: 100%; max-width: clamp(18.75rem, 15rem + 10vw, 23rem); margin-inline: auto; }
+.flywheel__scene { display: block; width: 100%; height: auto; overflow: visible; }
+
+.flywheel__orbit { fill: none; stroke: var(--border-strong); stroke-width: 1; opacity: 0.4; }
+.flywheel__orbit-outer {
+  fill: none;
+  stroke: var(--accelity-foundation-navy);
+  stroke-width: 1;
+  stroke-dasharray: 1 7;
+  stroke-linecap: round;
+  opacity: 0.22;
+}
+.flywheel__segment {
+  fill: none;
+  stroke: var(--accelity-foundation-navy);
+  stroke-width: 1.75;
+  opacity: 0.3;
+  transition: opacity var(--motion-normal) var(--ease-out), stroke var(--motion-normal) var(--ease-out), stroke-width var(--motion-normal) var(--ease-out);
+}
+/* The one restrained orange accent: the two segments either side of
+   CAPABILITIES, its "creation" half of the loop. */
+.flywheel__segment--accent {
+  stroke: var(--accent);
+  opacity: 0.9;
+  stroke-width: 2.25;
+}
+
+.flywheel__node { cursor: default; transition: opacity var(--motion-normal) var(--ease-out); }
+.flywheel__node:focus-visible { outline: none; }
+.flywheel__node-ring {
+  fill: var(--surface-canvas);
+  stroke: var(--accelity-foundation-navy);
+  stroke-width: 1.75;
+  transition: transform var(--motion-normal) var(--ease-out);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.flywheel__node-fill {
+  fill: var(--accelity-foundation-navy);
+  transition: transform var(--motion-normal) var(--ease-out);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.flywheel__node:hover .flywheel__node-ring,
+.flywheel__node:focus-visible .flywheel__node-ring,
+.flywheel__node:hover .flywheel__node-fill,
+.flywheel__node:focus-visible .flywheel__node-fill { transform: scale(1.12); }
+.flywheel__node:focus-visible .flywheel__node-ring,
+.flywheel__node:focus-visible .flywheel__node-fill { stroke: var(--accent); stroke-width: 3; }
+
+/* The right-hand nodes (Venture, Reuse) can sit over the mountain photograph
+   once it's large enough — paint-order draws a soft white halo behind the
+   fill on every label, the SVG equivalent of the text-shadow glow used
+   elsewhere in the hero, so legibility never depends on what's behind it. */
+.flywheel__label-title {
+  font-family: var(--accelity-font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  fill: var(--text-primary);
+  opacity: 0.82;
+  paint-order: stroke fill;
+  stroke: var(--accelity-white);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  transition: opacity var(--motion-normal) var(--ease-out);
+}
+.flywheel__label-detail {
+  font-family: var(--accelity-font-body);
+  font-size: 9.5px;
+  font-weight: 500;
+  fill: var(--text-secondary);
+  opacity: 0.7;
+  paint-order: stroke fill;
+  stroke: var(--accelity-white);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  transition: opacity var(--motion-normal) var(--ease-out);
+}
+.flywheel__node:hover .flywheel__label-title,
+.flywheel__node:focus-visible .flywheel__label-title { opacity: 1; }
+.flywheel__node:hover .flywheel__label-detail,
+.flywheel__node:focus-visible .flywheel__label-detail { opacity: 1; }
+
+.flywheel__caption {
+  font-family: var(--accelity-font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  fill: var(--text-secondary);
+}
+
+@supports selector(:has(a)) {
+  .flywheel:has(.flywheel__node:hover) .flywheel__node:not(:hover),
+  .flywheel:has(.flywheel__node:focus-visible) .flywheel__node:not(:focus-visible) { opacity: 0.4; }
+
+  .flywheel:has(#fw-node-capabilities:hover) #fw-seg-capabilities,
+  .flywheel:has(#fw-node-capabilities:focus-visible) #fw-seg-capabilities,
+  .flywheel:has(#fw-node-venture:hover) #fw-seg-venture,
+  .flywheel:has(#fw-node-venture:focus-visible) #fw-seg-venture,
+  .flywheel:has(#fw-node-reuse:hover) #fw-seg-reuse,
+  .flywheel:has(#fw-node-reuse:focus-visible) #fw-seg-reuse,
+  .flywheel:has(#fw-node-compound:hover) #fw-seg-compound,
+  .flywheel:has(#fw-node-compound:focus-visible) #fw-seg-compound,
+  .flywheel:has(#fw-node-next-venture:hover) #fw-seg-next-venture,
+  .flywheel:has(#fw-node-next-venture:focus-visible) #fw-seg-next-venture {
+    stroke: var(--accent);
+    opacity: 0.85;
+    stroke-width: 2.25;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .capability-diagram .pulse { animation: cap-pulse 1800ms ease-in-out infinite; }
-  @keyframes cap-pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.85; } 100% { transform: scale(1); opacity: 1; } }
+  /* Extremely slow, subtle — a breath, not a spin. */
+  .flywheel__segment--accent { animation: fw-accent-breathe 5s ease-in-out infinite; }
+  @keyframes fw-accent-breathe {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.65; }
+  }
+}
+
+/* --- Value propositions ----------------------------------------------------
+   Four non-numeric statements plus the editorial line, all one strip — no
+   cards, no counters, no separate row beneath it. */
+.hero__values {
+  margin-top: clamp(0.875rem, 0.5rem + 0.8vw, 1.375rem);
+  padding-top: var(--space-3);
+  border-top: var(--hairline) solid var(--border-default);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--space-4);
+}
+.hero__value {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  /* The last item can sit over the mountain photograph at wide viewports —
+     a stronger version of the glow used for the editorial line, since this
+     text is lighter-weight and needs more help. */
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 18px rgba(255, 255, 255, 0.8));
+}
+.hero__value-icon { flex: none; width: 22px; height: 22px; }
+.hero__value-icon svg { width: 100%; height: 100%; }
+.hero__value-text { display: flex; flex-direction: column; gap: 0.15rem; }
+.hero__value-title {
+  font-family: var(--accelity-font-display);
+  font-weight: 700;
+  font-size: var(--type-small);
+  color: var(--text-primary);
+}
+.hero__value-detail { font-size: 0.8125rem; color: var(--text-secondary); }
+
+/* The editorial line ("Bolder Businesses...") reads as the fifth, final
+   item of the same strip — same alignment system, no icon of its own. */
+.hero__editorial {
+  grid-column: 1 / -1;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  font-size: clamp(0.9375rem, 0.8rem + 0.6vw, 1.125rem);
+  color: var(--text-primary);
+  /* A soft white glow, not a box: keeps the line legible over whichever part
+     of the mountain photograph happens to sit behind it. */
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 0 22px rgba(255, 255, 255, 0.75);
+}
+.hero__editorial span { display: block; }
+.hero__editorial-rule { width: 2.5rem; height: 2px; background: var(--accent); margin-bottom: var(--space-2); }
+
+@media (min-width: 26rem) {
+  .hero__values { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 48rem) {
+  .hero__values {
+    grid-template-columns: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .hero__value { flex: 1 1 190px; }
+  .hero__value:not(:first-child) { border-inline-start: var(--hairline) solid var(--border-default); padding-inline-start: var(--space-6); }
+  .hero__editorial { flex: 1 1 190px; }
+}
+
+@media (min-width: 60rem) {
+  /* One five-column row: the four value props at their natural widths, the
+     editorial line taking whatever is left on the right. No wrap, no second
+     row. */
+  .hero__values {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.15fr 1.15fr 0.95fr;
+    align-items: end;
+    gap: var(--space-4);
+  }
+  .hero__editorial {
+    grid-column: auto;
+    text-align: left;
+  }
+  .hero__editorial-rule { margin-inline-start: 0; }
+}
+
+/* --- Mobile: mountain becomes a low, full-width atmospheric strip -------- */
+@media (max-width: 47.9375rem) {
+  .hero__mountain {
+    width: 100%;
+    height: min(32vh, 280px);
+    left: 0;
+  }
+  .hero__mountain img {
+    object-position: 80% 32%;
+    -webkit-mask-image: linear-gradient(to top, #000 42%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 42%, transparent 100%);
+  }
 }
 
 /* One orchestrated entrance, on the hero only. Nothing else on the site
@@ -285,6 +588,7 @@
   .hero [data-reveal="1"] { animation-delay: 60ms; }
   .hero [data-reveal="2"] { animation-delay: 170ms; }
   .hero [data-reveal="3"] { animation-delay: 280ms; }
+  .hero [data-reveal="4"] { animation-delay: 380ms; }
   @keyframes reveal { to { opacity: 1; transform: none; } }
 }
 
@@ -308,6 +612,62 @@
   font-size: var(--type-lead);
   color: var(--text-secondary);
   max-width: 46ch;
+}
+
+/* Page-header background photograph — opt-in per page via the section's
+   `image` field (About only, today). Same fade language as the home hero's
+   mountain: the photograph is real on the right, white where the text sits
+   on the left, with a soft gradient doing the transition between them. */
+.page-header--media {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 1.5rem + 7vw, 7.5rem) clamp(3.5rem, 2rem + 7vw, 8rem);
+}
+.page-header__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.page-header__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+.page-header--media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg,
+    var(--surface-canvas) 0%,
+    var(--surface-canvas) 30%,
+    rgba(255, 255, 255, 0.88) 44%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0.12) 76%,
+    transparent 92%);
+}
+.page-header--media .container { position: relative; z-index: 2; }
+/* Belt and suspenders: on top of the white gradient, a soft glow keeps the
+   text legible even where it lands directly over the photograph — the same
+   technique used for text over the home hero's mountain. */
+.page-header--media .page-header__headline,
+.page-header--media .page-header__support {
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 47.9375rem) {
+  .page-header__media img { object-position: 72% 60%; }
+  .page-header--media::before {
+    background: linear-gradient(180deg,
+      var(--surface-canvas) 0%,
+      var(--surface-canvas) 48%,
+      rgba(255, 255, 255, 0.9) 62%,
+      rgba(255, 255, 255, 0.45) 80%,
+      rgba(255, 255, 255, 0.15) 92%,
+      transparent 100%);
+  }
 }
 
 /* --- Statement ---------------------------------------------------------- */
@@ -358,7 +718,10 @@
 .role-card:focus { outline: none; }
 .role-card:focus-visible { box-shadow: 0 0 0 3px var(--focus-ring); }
 .role-card__indicator {
-  width: 36px; height: 6px; background: var(--border-default); border-radius: 3px;
+  width: var(--indicator-width);
+  height: 0.375rem; /* 6px */
+  background: var(--border-default);
+  border-radius: 3px;
 }
 .role-card__title { font-family: var(--accelity-font-display); font-size: var(--type-h3); font-weight: 700; }
 .role-card__desc { color: var(--text-secondary); margin-top: var(--space-2); }
@@ -396,6 +759,32 @@
     padding-block: var(--space-8);
   }
 }
+
+/* --- Ventures / Portfolio --------------------------------------------- */
+.venture-grid {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 48rem) {
+  .venture-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 80rem) {
+  .venture-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.venture-card {
+  background: var(--surface-canvas);
+  border: var(--hairline) solid var(--border-default);
+  padding: var(--space-6);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+.venture-card__image { width: 96px; height: 96px; object-fit: contain; flex: none; border-radius: 6px; background: var(--surface-subtle); }
+.venture-card__content { flex: 1; }
+.venture-card__brand { font-family: var(--accelity-font-display); font-size: var(--type-h3); margin: 0; }
+.venture-card__purpose { margin-top: var(--space-2); color: var(--text-secondary); }
+.venture-card__meta { margin-top: var(--space-2); font-size: var(--type-small); color: var(--text-secondary); }
+
 
 /* --- Matrix (two-up ruled cells) ---------------------------------------- */
 .matrix {
